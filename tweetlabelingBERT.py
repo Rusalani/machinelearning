@@ -65,7 +65,7 @@ def remove_noise(text):
     text = re.sub('\n', '', text)
     text = re.sub('\w*\d\w*', '', text)
     return text
-
+print(train.columns)
 train.text=train.text.apply(lambda x: remove_noise(x))
 test.text=test.text.apply(lambda x: remove_noise(x))
 
@@ -75,7 +75,7 @@ def lowercase_text(text):
 train.text=train.text.apply(lambda x: lowercase_text(x))
 test.text=test.text.apply(lambda x: lowercase_text(x))
 
-module_url = "https://tfhub.dev/tensorflow/bert_en_uncased_L-24_H-1024_A-16/1"
+module_url = "https://tfhub.dev/tensorflow/bert_en_uncased_L-24_H-1024_A-16/3"
 bert_layer = hub.KerasLayer(module_url, trainable=True)
 
 vocab_file = bert_layer.resolved_object.vocab_file.asset_path.numpy()
@@ -104,7 +104,7 @@ train_history = model.fit(
 metrics=pd.DataFrame(model.history.history)
 print(metrics)
 
-#model.load_weights('model.h5')
+
 test_pred = model.predict(test_input)
 
 submission['target'] = test_pred.round().astype(int)
