@@ -75,7 +75,7 @@ def lowercase_text(text):
 train.text=train.text.apply(lambda x: lowercase_text(x))
 test.text=test.text.apply(lambda x: lowercase_text(x))
 
-module_url = "https://tfhub.dev/tensorflow/bert_en_uncased_L-24_H-1024_A-16/3"
+module_url = "https://tfhub.dev/tensorflow/bert_en_uncased_L-24_H-1024_A-16/2"
 bert_layer = hub.KerasLayer(module_url, trainable=True)
 
 vocab_file = bert_layer.resolved_object.vocab_file.asset_path.numpy()
