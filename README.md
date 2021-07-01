@@ -1,2 +1,2 @@
 # machine learning perceptron
-Can read in bit information for letters and using a perceptron aolgrithum to idenfiy letters
+Can read in bit information for letters and using a perceptron algorithm to idenfiy letters
